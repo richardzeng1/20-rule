@@ -1,9 +1,14 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
   template: "./src/index.html",
   filename: "./index.html"
 });
+
+const copypWebpackPlugin = new CopyWebpackPlugin([
+    {from:'./public/manifest.json',to:'./'}
+]);
 
 module.exports = {
   module: {
@@ -35,5 +40,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [htmlWebpackPlugin]
+  plugins: [htmlWebpackPlugin, copypWebpackPlugin]
 };
