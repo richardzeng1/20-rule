@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/app";
+import Timer from "./components/timer";
 
 /*
 This is the entry point to the application.
 All componenets are under the Components directory.
 */
 const Index = () => {
-  return <App />;
+    return <Timer />;
 };
 
 ReactDOM.render(<Index />, document.getElementById("index"));
