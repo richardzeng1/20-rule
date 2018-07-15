@@ -5,7 +5,7 @@ class Timer extends React.Component{
         super();
         this.state = {
             time: {},
-            seconds: 1200
+            seconds: 1200 // Amount of time to count down
         };
         this.timer = 0;
         this.startTimer = this.startTimer.bind(this);
@@ -14,7 +14,6 @@ class Timer extends React.Component{
     render(){
         return(
             <div>
-                <button onClick={this.startTimer}>Start</button>
                 m: {this.state.time.m} s: {this.state.time.s}
             </div>
         );
@@ -40,6 +39,7 @@ class Timer extends React.Component{
     componentDidMount() {
     let timeLeftVar = this.secondsToTime(this.state.seconds);
     this.setState({ time: timeLeftVar });
+    this.startTimer();
   }
 
   startTimer() {
