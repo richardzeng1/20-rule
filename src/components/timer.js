@@ -1,42 +1,43 @@
-import React from 'react';
+import React from "react";
 
-class Timer extends React.Component{
-    constructor(props){
-        super();
-        this.state = {
-            time: {},
-            seconds: 1200 // Amount of time to count down
-        };
-        this.timer = 0;
-        this.startTimer = this.startTimer.bind(this);
-        this.countDown = this.countDown.bind(this);
-    }
-    render(){
-        return(
-            <div>
-                m: {this.state.time.m} s: {this.state.time.s}
-            </div>
-        );
-    }
-
-    secondsToTime(secs){
-        let hours = Math.floor(secs / (60 * 60));
-
-        let divisor_for_minutes = secs % (60 * 60);
-        let minutes = Math.floor(divisor_for_minutes / 60);
-
-        let divisor_for_seconds = divisor_for_minutes % 60;
-        let seconds = Math.ceil(divisor_for_seconds);
-
-        let obj = {
-            "h": hours,
-            "m": minutes,
-            "s": seconds
-        };
-        return obj;
+class Timer extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {
+      time: {},
+      //seconds: 1200 // Amount of time to count down
+      seconds: 5
     };
+    this.timer = 0;
+    this.startTimer = this.startTimer.bind(this);
+    this.countDown = this.countDown.bind(this);
+  }
+  render() {
+    return (
+      <div>
+        m: {this.state.time.m} s: {this.state.time.s}
+      </div>
+    );
+  }
 
-    componentDidMount() {
+  secondsToTime(secs) {
+    let hours = Math.floor(secs / (60 * 60));
+
+    let divisor_for_minutes = secs % (60 * 60);
+    let minutes = Math.floor(divisor_for_minutes / 60);
+
+    let divisor_for_seconds = divisor_for_minutes % 60;
+    let seconds = Math.ceil(divisor_for_seconds);
+
+    let obj = {
+      h: hours,
+      m: minutes,
+      s: seconds
+    };
+    return obj;
+  }
+
+  componentDidMount() {
     let timeLeftVar = this.secondsToTime(this.state.seconds);
     this.setState({ time: timeLeftVar });
     this.startTimer();
@@ -53,7 +54,7 @@ class Timer extends React.Component{
     let seconds = this.state.seconds - 1;
     this.setState({
       time: this.secondsToTime(seconds),
-      seconds: seconds,
+      seconds: seconds
     });
 
     // Check if we're at zero.
